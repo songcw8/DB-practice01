@@ -61,9 +61,16 @@ FROM orders o
 ORDER BY o.quantity DESC
 LIMIT 1;
 
-
-
 -- 07. 사용자별 총 주문 금액을 조회하세요.
+SELECT username, sum(price)
+    FROM orders o
+        JOIN users u
+            ON o.user_id = u.user_id
+    JOIN products p
+        ON p.product_id = o.product_id
+GROUP BY o.user_id;
+
+
 -- 08. 평균 별점이 4점 이상인 상품의 이름과 평균 별점을 조회하세요.
 -- 09. 상품별 리뷰 수를 조회하고, 리뷰 수가 2개 이상인 상품만 조회하세요.
 -- 10. T-shirt를 구매한 사용자의 이름과 이메일을 조회하세요.
