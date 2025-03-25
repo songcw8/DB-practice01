@@ -40,8 +40,29 @@ FROM users u # 1-1
               ON o.product_id = p.product_id;
 # 여기까지만...
 -- 04. 별점 4점 이상인 리뷰의 상품 이름과 리뷰 내용을 조회하세요.
+SELECT product_name, comment
+    FROM reviews r
+        JOIN products p
+        ON r.product_id = p.product_id
+    WHERE rating >= 4;
+
 -- 05. 카테고리별 상품 수를 조회하세요.
+SELECT sum(quantity)
+    FROM products p
+        JOIN orders o
+        ON p.product_id = o.product_id
+        GROUP BY p.category;
+
 -- 06. 가장 많이 팔린 상품의 이름과 판매 수량을 조회하세요.
+SELECT product_name, quantity
+FROM orders o
+         JOIN products p
+              ON o.product_id = p.product_id
+ORDER BY o.quantity DESC
+LIMIT 1;
+
+
+
 -- 07. 사용자별 총 주문 금액을 조회하세요.
 -- 08. 평균 별점이 4점 이상인 상품의 이름과 평균 별점을 조회하세요.
 -- 09. 상품별 리뷰 수를 조회하고, 리뷰 수가 2개 이상인 상품만 조회하세요.
