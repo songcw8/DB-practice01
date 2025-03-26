@@ -38,8 +38,12 @@ FROM users u # 1-1
                   AND u.user_id = o.user_id # ~ 1-2.
          JOIN products p # 1-3
               ON o.product_id = p.product_id;
-# 여기까지만...
+
 -- 04. 별점 4점 이상인 리뷰의 상품 이름과 리뷰 내용을 조회하세요.
+desc users;
+desc products;
+desc reviews;
+
 SELECT product_name, comment
     FROM reviews r
         JOIN products p
@@ -47,11 +51,11 @@ SELECT product_name, comment
     WHERE rating >= 4;
 
 -- 05. 카테고리별 상품 수를 조회하세요.
-SELECT sum(quantity)
-    FROM products p
-        JOIN orders o
-        ON p.product_id = o.product_id
-        GROUP BY p.category;
+SELECT category, COUNT(*) AS '상품 수'
+FROM products p
+         JOIN orders o
+              ON p.product_id = o.product_id
+GROUP BY p.category;
 
 -- 06. 가장 많이 팔린 상품의 이름과 판매 수량을 조회하세요.
 SELECT product_name, quantity
