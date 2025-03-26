@@ -28,3 +28,15 @@ VALUES (1, 1, 5, 'Excellent product!'),
        (1, 3, 3, 'Average quality.'),
        (3, 4, 5, 'Perfect fit!'),
        (4, 5, 4, 'Interesting book.');
+
+INSERT INTO reviews (user_id, product_id, rating, comment)
+VALUES (1, 1, 4, 'Very useful product.'),
+       (2, 2, 3, 'Decent quality, not bad.'),
+       (3, 3, 5, 'Absolutely loved it!'),
+       (4, 4, 2, 'Disappointing experience.'),
+       (1, 5, 1, 'Waste of money.'),
+       (2, 1, 4, 'Pretty good, would recommend.'),
+       (3, 2, 5, 'Exceeded my expectations!'),
+       (4, 3, 3, 'It\'s okay, nothing special.'),
+       (1, 4, 2, 'Not worth the price.'),
+       (2, 5, 5, 'Fantastic product, highly recommend.');

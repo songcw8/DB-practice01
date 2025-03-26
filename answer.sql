@@ -79,10 +79,10 @@ SELECT username, sum(quantity * price)
 GROUP BY o.user_id;
 
 -- 08. 평균 별점이 4점 이상인 상품의 이름과 평균 별점을 조회하세요.
-SELECT p.product_name, avg(r.rating)
+SELECT p.product_name AS 상품명, avg(r.rating) AS '평균 평점'
 FROM reviews r JOIN products p ON r.product_id = p.product_id
-WHERE rating >= 4
-GROUP BY p.product_name;
+GROUP BY p.product_name
+HAVING avg(rating) >= 4;
 
 -- 09. 상품별 리뷰 수를 조회하고, 리뷰 수가 2개 이상인 상품만 조회하세요.
 SELECT product_name, COUNT(*) AS review_count
