@@ -58,7 +58,6 @@ FROM products p
 GROUP BY p.category;
 
 -- 06. 가장 많이 팔린 상품의 이름과 판매 수량을 조회하세요.
-SELECT * FROM orders;
 SELECT product_name AS '상품명', sum(quantity) AS '판매량'
 FROM orders o
          JOIN products p
@@ -71,7 +70,7 @@ HAVING sum(quantity) = (SELECT max(total_quantity)
 
 
 -- 07. 사용자별 총 주문 금액을 조회하세요.
-SELECT username, sum(price)
+SELECT username, sum(quantity * price)
     FROM orders o
         JOIN users u
             ON o.user_id = u.user_id
